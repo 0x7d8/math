@@ -377,71 +377,73 @@ export default function PageTriangle() {
 
 	return (
 		<div className={'flex flex-row justify-center items-center h-full'}>
-			<Card className={'p-4 md:w-3/4 md:h-1/2 h-full w-full relative'}>
-				<h1 className={'text-2xl font-semibold'}>Calculate Triangle</h1>
+			<Card className={'p-4 xl:w-3/4 xl:h-1/2 h-3/4 w-full relative'}>
+        <div className={'grid xl:grid-cols-2 grid-cols-1 gap-2'}>
+          <div className={'flex flex-col w-full'}>
+            <h1 className={'text-2xl font-semibold'}>Calculate Triangle</h1>
 
-				<div className={'hidden lg:inline absolute -top-10 right-0 h-[400px] w-[400px]'}>
-					<DraggableTriangle />
-				</div>
+            <div className={'flex flex-col xl:grid xl:grid-cols-3 gap-2 w-full mt-4 space-y-2'}>
+              <div className={'flex flex-row items-center'}>
+                <p className={'w-12'}>a =</p>
+                <Input type={'number'} placeholder={'a'} value={a ?? ''} onChange={(e) => setA(parse(e.target.value))} />
+              </div>
+              <div className={'flex flex-row items-center'}>
+                <p className={'w-12'}>b =</p>
+                <Input type={'number'} placeholder={'b'} value={b ?? ''} onChange={(e) => setB(parse(e.target.value))} />
+              </div>
+              <div className={'flex flex-row items-center'}>
+                <p className={'w-12'}>c =</p>
+                <Input type={'number'} placeholder={'c'} value={c ?? ''} onChange={(e) => setC(parse(e.target.value))} />
+              </div>
+              <div className={'flex flex-row items-center'}>
+                <p className={'w-12'}>α° =</p>
+                <Input type={'number'} placeholder={'α°'} value={aDegrees ?? ''} onChange={(e) => setADegrees(parse(e.target.value))} />
+              </div>
+              <div className={'flex flex-row items-center'}>
+                <p className={'w-12'}>β° =</p>
+                <Input type={'number'} placeholder={'β°'} value={bDegrees ?? ''} onChange={(e) => setBDegrees(parse(e.target.value))} />
+              </div>
+              <div className={'flex flex-row items-center'}>
+                <p className={'w-12'}>γ° =</p>
+                <Input type={'number'} placeholder={'γ°'} value={cDegrees ?? ''} onChange={(e) => setCDegrees(parse(e.target.value))} />
+              </div>
+            </div>
 
-				<div className={'flex flex-col w-1/2 mt-4 space-y-2'}>
-					<div className={'flex flex-row items-center'}>
-						<p className={'w-12'}>a =</p>
-						<Input type={'number'} placeholder={'a'} value={a ?? ''} onChange={(e) => setA(parse(e.target.value))} />
-					</div>
-					<div className={'flex flex-row items-center'}>
-						<p className={'w-12'}>b =</p>
-						<Input type={'number'} placeholder={'b'} value={b ?? ''} onChange={(e) => setB(parse(e.target.value))} />
-					</div>
-					<div className={'flex flex-row items-center'}>
-						<p className={'w-12'}>c =</p>
-						<Input type={'number'} placeholder={'c'} value={c ?? ''} onChange={(e) => setC(parse(e.target.value))} />
-					</div>
-					<div className={'flex flex-row items-center'}>
-						<p className={'w-12'}>α° =</p>
-						<Input type={'number'} placeholder={'α°'} value={aDegrees ?? ''} onChange={(e) => setADegrees(parse(e.target.value))} />
-					</div>
-					<div className={'flex flex-row items-center'}>
-						<p className={'w-12'}>β° =</p>
-						<Input type={'number'} placeholder={'β°'} value={bDegrees ?? ''} onChange={(e) => setBDegrees(parse(e.target.value))} />
-					</div>
-					<div className={'flex flex-row items-center'}>
-						<p className={'w-12'}>γ° =</p>
-						<Input type={'number'} placeholder={'γ°'} value={cDegrees ?? ''} onChange={(e) => setCDegrees(parse(e.target.value))} />
-					</div>
-				</div>
+            <div className={'w-1/2 space-x-2 flex flex-row mt-4'}>
+              <Button onClick={calculate} disabled={Boolean((!a && !b && !c && !aDegrees && !bDegrees && !cDegrees) || (a && b && c && aDegrees && bDegrees && cDegrees))}>
+                Calculate
+              </Button>
 
-				<div className={'grid grid-cols-2 h-1/4 mt-4 gap-2'}>
-					<div className={'w-1/2 space-x-2 flex flex-row'}>
-						<Button onClick={calculate} disabled={Boolean((!a && !b && !c && !aDegrees && !bDegrees && !cDegrees) || (a && b && c && aDegrees && bDegrees && cDegrees))}>
-              Calculate
-            </Button>
+              <Button onClick={() => {
+                setA(undefined)
+                setB(undefined)
+                setC(undefined)
+                setADegrees(undefined)
+                setBDegrees(undefined)
+                setCDegrees(undefined)
+                setSteps([])
+              }} disabled={!a && !b && !c && !aDegrees && !bDegrees && !cDegrees} variant={'outline'}>
+                Clear
+              </Button>
 
-						<Button onClick={() => {
-							setA(undefined)
-							setB(undefined)
-							setC(undefined)
-							setADegrees(undefined)
-							setBDegrees(undefined)
-							setCDegrees(undefined)
-							setSteps([])
-						}} disabled={!a && !b && !c && !aDegrees && !bDegrees && !cDegrees} variant={'outline'}>
-							Clear
-						</Button>
+              <Button onClick={() => {
+                setSteps([])
+              }} disabled={!steps.length} variant={'outline'}>
+                Clear Steps
+              </Button>
+            </div>
 
-            <Button onClick={() => {
-              setSteps([])
-            }} disabled={!steps.length} variant={'outline'}>
-              Clear Steps
-            </Button>
-					</div>
+            <code className={'text-sm p-2 mt-4'}>
+              {steps.slice(0, 10).map((step, index) => (
+                <p key={index}>{step}</p>
+              ))}
+            </code>
+          </div>
 
-					<code className={'w-full h-full text-sm overflow-y-auto border rounded-md p-2'}>
-						{steps.map((step, index) => (
-							<p key={index}>{step}</p>
-						))}
-					</code>
-				</div>
+          <div className={'hidden xl:inline h-full w-full -mt-3'}>
+            <DraggableTriangle />
+          </div>
+        </div>
 			</Card>
 		</div>
 	)

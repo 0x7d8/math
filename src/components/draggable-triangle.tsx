@@ -48,7 +48,9 @@ export default function DraggableTriangle() {
   return (
 		<svg
 			ref={svgRef}
-			viewBox={'0 0 200 200'}
+			viewBox={'0 0 250 250'}
+			width={'100%'}
+			height={'100%'}
 			onMouseMove={handleMouseMove}
 			onMouseUp={handleMouseUp}
 			onMouseLeave={handleMouseUp}
