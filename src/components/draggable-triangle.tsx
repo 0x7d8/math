@@ -4,7 +4,7 @@ export default function DraggableTriangle() {
   const [points, setPoints] = useState([
     { x: 50, y: 150 },
     { x: 150, y: 150 },
-    { x: 100, y: 50 }
+    { x: 50, y: 50 }
   ])
 
   const [draggedPoint, setDraggedPoint] = useState<{ index: number, offsetX: number, offsetY: number } | null>(null)

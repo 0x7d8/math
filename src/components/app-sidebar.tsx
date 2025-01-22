@@ -40,7 +40,7 @@ export function AppSidebar() {
               <CollapsibleContent>
                 <SidebarGroupContent>
                   <SidebarMenu>
-                    <SidebarMenuItem className={'space-y-2'}>
+                    <SidebarMenuItem className={'space-y-1'}>
                       <SidebarMenuButton asChild isActive={location.pathname === '/'}>
                         <Link to={'/'}>
                           <HomeIcon className={'mr-2'} />
