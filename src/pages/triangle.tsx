@@ -382,7 +382,12 @@ export default function PageTriangle() {
           <div className={'flex flex-col w-full'}>
             <h1 className={'text-2xl font-semibold'}>Calculate Triangle</h1>
 
-            <div className={'flex flex-col xl:grid xl:grid-cols-3 gap-2 w-full mt-4 space-y-2'}>
+            <form className={'flex flex-col xl:grid xl:grid-cols-3 gap-2 w-full mt-4 space-y-2'} onSubmit={(e) => {
+              e.preventDefault()
+              calculate()
+            }}>
+              <button type={'submit'} hidden>Calculate</button>
+
               <div className={'flex flex-row items-center'}>
                 <p className={'w-12'}>a =</p>
                 <Input type={'number'} placeholder={'a'} value={a ?? ''} onChange={(e) => setA(parse(e.target.value))} />
@@ -407,7 +412,7 @@ export default function PageTriangle() {
                 <p className={'w-12'}>γ° =</p>
                 <Input type={'number'} placeholder={'γ°'} value={cDegrees ?? ''} onChange={(e) => setCDegrees(parse(e.target.value))} />
               </div>
-            </div>
+            </form>
 
             <div className={'w-1/2 space-x-2 flex flex-row mt-4'}>
               <Button onClick={calculate} disabled={Boolean((!a && !b && !c && !aDegrees && !bDegrees && !cDegrees) || (a && b && c && aDegrees && bDegrees && cDegrees))}>

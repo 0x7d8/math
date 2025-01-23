@@ -29,12 +29,12 @@ export function AppSidebar() {
           </Link>
         </SidebarHeader>
         <SidebarContent>
-          <Collapsible defaultOpen className={'group/collapsible-information'}>
+          <Collapsible defaultOpen className={'group/collapsible-basics'}>
             <SidebarGroup>
               <SidebarGroupLabel asChild>
                 <CollapsibleTrigger>
-                  Information
-                  <ChevronDown className={'ml-auto transition-transform group-data-[state=open]/collapsible-information:rotate-180'} />
+                  Basics
+                  <ChevronDown className={'ml-auto transition-transform group-data-[state=open]/collapsible-basics:rotate-180'} />
                 </CollapsibleTrigger>
               </SidebarGroupLabel>
               <CollapsibleContent>
