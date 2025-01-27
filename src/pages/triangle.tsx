@@ -418,7 +418,7 @@ export default function PageTriangle() {
               </div>
             </form>
 
-            <div className={'w-1/2 justify-between flex flex-row mt-4'}>
+            <div className={'w-1/2 justify-between items-center flex flex-row mt-4'}>
               <div className={'flex flex-row items-center space-x-2'}>
                 <Button onClick={calculate} disabled={Boolean((!a && !b && !c && !aDegrees && !bDegrees && !cDegrees) || (a && b && c && aDegrees && bDegrees && cDegrees))}>
                   Calculate
@@ -444,7 +444,7 @@ export default function PageTriangle() {
               </div>
 
               <div className={'flex flex-row items-center'}>
-                <Switch checked={doRound} onChange={() => setDoRound((old) => !old)} />
+                <Switch defaultChecked onChange={() => setDoRound((old) => !old)} />
                 <p className={'ml-2'}>Round</p>
               </div>
             </div>
