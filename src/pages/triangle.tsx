@@ -378,39 +378,39 @@ export default function PageTriangle() {
 
     // check for equal sides to calculate angles
     else if (a && b && a === b && !aDegrees && !bDegrees && cDegrees) {
-      const rest = 180 - cDegrees / 2
+      const rest = (180 - cDegrees) / 2
 
       setADegrees(rIfOn(rest))
       setBDegrees(rIfOn(rest))
 
       setSteps((old) => [
         ...old,
-        `α° = 180 - γ° / 2 = ${rIfOn(rest)}`,
-        'β° = 180 - γ° / 2 = ${rIfOn(rest)}'
+        `α° = (180 - γ°) / 2 = ${rIfOn(rest)}`,
+        `β° = (180 - γ°) / 2 = ${rIfOn(rest)}`
       ])
       return
     } else if (a && c && a === c && !aDegrees && bDegrees && !cDegrees) {
-      const rest = 180 - bDegrees / 2
+      const rest = (180 - bDegrees) / 2
 
       setADegrees(rIfOn(rest))
       setCDegrees(rIfOn(rest))
 
       setSteps((old) => [
         ...old,
-        `α° = 180 - β° / 2 = ${rIfOn(rest)}`,
-        'γ° = 180 - β° / 2 = ${rIfOn(rest)}'
+        `α° = (180 - β°) / 2 = ${rIfOn(rest)}`,
+        `γ° = (180 - β°) / 2 = ${rIfOn(rest)}`
       ])
       return
     } else if (b && c && b === c && aDegrees && !bDegrees && !cDegrees) {
-      const rest = 180 - aDegrees / 2
+      const rest = (180 - aDegrees) / 2
 
       setBDegrees(rIfOn(rest))
       setCDegrees(rIfOn(rest))
 
       setSteps((old) => [
         ...old,
-        `β° = 180 - α° / 2 = ${rIfOn(rest)}`,
-        'γ° = 180 - α° / 2 = ${rIfOn(rest)}'
+        `β° = (180 - α°) / 2 = ${rIfOn(rest)}`,
+        `γ° = (180 - α°) / 2 = ${rIfOn(rest)}`
       ])
       return
     } else if (a && b && c && a === b && a === c && b === c && !aDegrees && !bDegrees && !cDegrees) {
