@@ -367,7 +367,7 @@ export default function PageTriangle() {
     } else if (a && !b && !c && aDegrees && bDegrees && cDegrees) {
       setB(rIfOn((a * Math.sin(number.toRadians(bDegrees))) / Math.sin(number.toRadians(aDegrees))))
       setC(rIfOn((a * Math.sin(number.toRadians(cDegrees))) / Math.sin(number.toRadians(aDegrees))))
-      
+
       setSteps((old) => [
         ...old,
         `b = (${a} * sin(${bDegrees})) / sin(${aDegrees}) = ${rIfOn((a * Math.sin(number.toRadians(bDegrees))) / Math.sin(number.toRadians(aDegrees)))}`,

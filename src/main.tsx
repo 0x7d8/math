@@ -11,6 +11,7 @@ import { Toaster } from "@/components/ui/toaster"
 import Page404 from "@/pages/404"
 import PageIndex from "@/pages/index"
 import PageTriangle from "@/pages/triangle"
+import PageInterest from "@/pages/interest"
 
 import "@/global.css"
 
@@ -26,6 +27,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
               <Routes>
                 <Route path={'/'} element={<PageIndex />} />
                 <Route path={'/triangle'} element={<PageTriangle />} />
+                <Route path={'/interest'} element={<PageInterest />} />
                 <Route path={'*'} element={<Page404 />} />
               </Routes>
               <Toaster />

@@ -10,7 +10,7 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
-import { ChevronDown, HomeIcon, TriangleIcon } from "lucide-react"
+import { ChevronDown, DollarSignIcon, HomeIcon, TriangleIcon } from "lucide-react"
 import { Link, useLocation } from "react-router-dom"
 
 export function AppSidebar() {
@@ -51,6 +51,12 @@ export function AppSidebar() {
                         <Link to={'/triangle'}>
                           <TriangleIcon className={'mr-2'} />
                           Triangle
+                        </Link>
+                      </SidebarMenuButton>
+                      <SidebarMenuButton asChild isActive={location.pathname === '/interest'}>
+                        <Link to={'/interest'}>
+                          <DollarSignIcon className={'mr-2'} />
+                          Interest
                         </Link>
                       </SidebarMenuButton>
                     </SidebarMenuItem>

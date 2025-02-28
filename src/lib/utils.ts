@@ -7,9 +7,17 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function round(value: number): number {
-  const [top, bottom] = number.fraction(value)
+  const normalRound = number.round(value, 4)
 
-  return number.round(top / bottom, 4)
+  const [top, bottom] = number.fraction(value),
+    fractionRound = number.round(top / bottom, 4)
+
+  if (Math.abs(normalRound - value) < Math.abs(fractionRound - value)) return normalRound
+  return fractionRound
+}
+
+export function root(value: number, root: number): number {
+  return Math.pow(value, 1 / root)
 }
 
 export function is(value: number | undefined, target: number): boolean {
